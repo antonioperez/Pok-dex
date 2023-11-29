@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import { HotToaster } from '../components/hot-toaster'
 
 export const metadata = {
-  metadataBase: new URL('https://postgres-pgvector.vercel.app'),
+  metadataBase: new URL('https://pokedex-seven-sigma.vercel.app'),
   title: 'Pokedex AI-powered Semantic Search Demo',
   description:
     'A Next.js app that uses Vercel Postgres with pgvector, Prisma, and OpenAI to power a semantic search.',
