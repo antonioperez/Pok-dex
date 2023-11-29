@@ -12,7 +12,7 @@ You can choose from one of the following two methods to use this repository:
 
 ### One-Click Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/antonioperez/Pokedex&env=OPENAI_API_KEY&envDescription=Get+your+OpenAI+API+key+here%3A&envLink=https%3A%2F%2Fplatform.openai.com%2Faccount%2Fapi-keys&project-name=pokedex&repository-name=pokedex&demo-title=Pokedex&demo-description=Semantic Pokedex&demo-url=https://pokedex-seven-sigma.vercel.app&demo-image=https://pokedex-seven-sigma.vercel.app/pokeball.jpg&stores=%5B%7B%22type%22%3A%22kv%22%7D%2C%7B%22type%22%3A%22postgres%22%7D%5D)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/antonioperez/Pokedex&env=OPENAI_API_KEY&envDescription=Get+your+OpenAI+API+key+here%3A&envLink=https%3A%2F%2Fplatform.openai.com%2Faccount%2Fapi-keys&project-name=pokedex&repository-name=pokedex&demo-title=Pokedex&demo-description=Semantic+Pokedex&demo-url=https://pokedex-seven-sigma.vercel.app&demo-image=https://pokedex-seven-sigma.vercel.app/pokeball.jpg&stores=%5B%7B%22type%22%3A%22kv%22%7D%2C%7B%22type%22%3A%22postgres%22%7D%5D)
 
 ### Clone and Deploy
 
