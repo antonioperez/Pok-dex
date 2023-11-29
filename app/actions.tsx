@@ -41,6 +41,7 @@ async function generateEmbedding(raw: string) {
     model: 'text-embedding-ada-002',
     input,
   })
+  
   const [{ embedding }] = (embeddingData as any).data
   return embedding
 }
