@@ -41,7 +41,7 @@ export default function Home() {
           href="https://vercel.com/postgres"
           className="font-medium underline underline-offset-4 hover:text-black transition-colors"
         >
-          Vercel Postgres
+          Pokedex
         </Link>{' '}
         semantic search demo with{' '}
         <Link
