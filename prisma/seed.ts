@@ -9,10 +9,6 @@ if (!process.env.OPENAI_API_KEY) {
   throw new Error('process.env.OPENAI_API_KEY is not defined. Please set it.')
 }
 
-if (!process.env.PGHOST) {
-  throw new Error('process.env.PGHOST is not defined. Please set it.')
-}
-
 async function main() {
   try {
     const pika = await prisma.pokemon.findFirst({
@@ -74,6 +70,7 @@ async function generateEmbedding(_input: string) {
     model: 'text-embedding-ada-002',
     input,
   })
+
   console.log(embeddingData)
   const [{ embedding }] = (embeddingData as any).data
   return embedding
