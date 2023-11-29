@@ -19,7 +19,7 @@ You can choose from one of the following two methods to use this repository:
 Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
 
 ```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/storage/pokedex
+pnpm create next-app --example https://github.com/antonioperez/Pokedex
 ```
 
 Once that's done, copy the .env.example file in this directory to .env (which will be ignored by Git):
