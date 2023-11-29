@@ -30,7 +30,7 @@ cp .env.example .env
 
 Then open `.env` and set the environment variables to match the ones in your Vercel Storage Dashboard.
 
-Next, run Next.js in development mode:
+Next, run Next.js in development mode. Remember to build first to seed your database:
 
 ```bash
 pnpm build
