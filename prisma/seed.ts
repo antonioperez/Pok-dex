@@ -137,12 +137,12 @@ async function fetchPokemon() {
 
       return {
         ...pokemon,
-        description: descriptionText.replace('pokemon', pokemon.name).replace('Pokémon', pokemon.name).replace('POKéMON', pokemon.name).replace('Pokémon', pokemon.name).trim(),
+        description: descriptionText.replaceAll('pokemon', pokemon.name).replaceAll('Pokémon', pokemon.name).replaceAll('POKéMON', pokemon.name).replaceAll('Pokémon', pokemon.name).trim(),
         color,
         shape,
         isLegendary,
         habitat,
-        genus: genus.replace('pokemon', '').replace('Pokémon', '').replace('POKéMON', '').replace('Pokémon', '').trim(),
+        genus: genus.replaceAll('pokemon', '').replaceAll('Pokémon', '').replaceAll('POKéMON', '').replaceAll('Pokémon', '').trim(),
       }
     });
 
