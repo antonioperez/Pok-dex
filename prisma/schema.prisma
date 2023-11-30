@@ -18,6 +18,10 @@ model Pokemon {
   description String
   color       String
   type        String
+  shape       String
+  isLegendary Boolean
+  habitat     String
+  genus       String
   height      Int
   weight      Int
   total       Int

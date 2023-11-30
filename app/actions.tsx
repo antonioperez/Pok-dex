@@ -27,6 +27,9 @@ export async function searchPokedex(
         height,
         color,
         type,
+        genus,
+        habitat,
+        shape,
         1 - (embedding <=> ${vectorQuery}::vector) as similarity
       FROM pokemon
 

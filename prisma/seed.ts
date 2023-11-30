@@ -39,8 +39,12 @@ async function main() {
       name: ${record.name}
       description: ${record.description}
       color: ${record.color}
-      abilities: ${record.abilities}. 
+      abilities: ${record.abilities}
       type: ${record.type}
+      ${record.habitat ? `habitat: ${record.habitat}` : ''}
+      ${record.genus ? `body shape: ${record.shape}` : ''}
+      ${record.genus ? `genus: ${record.genus}` : ''}
+      ${record.isLegendary ? 'is a legendary pokemon' : ''},
     `;
 
     const embedding = await generateEmbedding(embeddingText);
@@ -116,13 +120,29 @@ async function fetchPokemon() {
         return null;
       }
 
-      const descriptionText = (description.flavor_text_entries.find((entry: { language: { name: string; }; }) => entry.language.name === 'en')?.flavor_text) || '';
+      const descriptions = (description.flavor_text_entries.filter((entry: { language: { name: string; }; }) => entry.language.name === 'en')) || [];
+      const descriptionText = descriptions.reduce((acc: any, entry: { flavor_text: string; }) => {
+        if(entry.flavor_text.length > acc.length) {
+          return entry.flavor_text;
+        }
+
+        return acc;
+      }, '');
+
       const color = description.color.name;
+      const shape = description.shape?.name || '';
+      const isLegendary = description.is_legendary || false;
+      const habitat = description.habitat?.name || '';
+      const genus = description.genera.find((entry: { language: { name: string; }; }) => entry.language.name === 'en')?.genus || '';
 
       return {
         ...pokemon,
         description: descriptionText,
-        color
+        color,
+        shape,
+        isLegendary,
+        habitat,
+        genus
       }
     });
 
@@ -146,7 +166,11 @@ async function fetchPokemon() {
           defense: result.stats.find((stat: { stat: { name: any } }) => stat.stat.name === 'defense').base_stat,
           spAtk: result.stats.find((stat: { stat: { name: any } }) => stat.stat.name === 'special-attack').base_stat,
           spDef: result.stats.find((stat: { stat: { name: any } }) => stat.stat.name === 'special-defense').base_stat,
-          speed: result.stats.find((stat: { stat: { name: any } }) => stat.stat.name === 'speed').base_stat
+          speed: result.stats.find((stat: { stat: { name: any } }) => stat.stat.name === 'speed').base_stat,
+          shape: result.shape,
+          isLegendary: result.isLegendary,
+          habitat: result.habitat,
+          genus: result.genus,
       }));
 
       return pokemon;

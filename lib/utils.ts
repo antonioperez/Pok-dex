@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 // Create a new ratelimiter, that allows 10 requests per 10 seconds
 export const ratelimit = new Ratelimit({
   redis: kv as any,
-  limiter: Ratelimit.slidingWindow(10, '10 s'),
+  limiter: Ratelimit.slidingWindow(20, '10 s'),
   analytics: true,
   
   /**

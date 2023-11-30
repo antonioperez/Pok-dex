@@ -4,7 +4,6 @@ import { Command, CommandInput } from '@/components/command';
 import { type Pokemon } from '@prisma/client';
 import { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
-import Image from 'next/image'
 
 export interface SearchProps {
 	searchPokedex: (content: string) => Promise<Array<Pokemon & { similarity: number }>>;
@@ -46,17 +45,17 @@ export function Search({ searchPokedex }: SearchProps) {
 			<div className='grid grid-cols-4 gap-4'>
 				{searchResults.map((pokemon) => (
 					<div key={pokemon.name} className='max-w-xs rounded overflow-hidden shadow-lg bg-white'>
-						<Image className='w-11/12' src={pokemon.image} alt='Pokemon Image' />
+						<img className='w-11/12' src={pokemon.image} alt={`${pokemon.name} Image`} />
 						<div className='px-6 py-4'>
-							<div className='font-bold text-xl mb-1'>{pokemon.name}</div>
+							<div className='font-bold text-xl mb-1'>{pokemon.name} <span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 ml-2'>
+                {pokemon.similarity?.toFixed(3)}
+							</span></div>
 							<p className='text-gray-700 text-base mb-1'>{pokemon.description}</p>
 							<p className='text-gray-700 text-base'><span className="font-bold">Type:</span> {pokemon.type}</p>
 							<p className='text-gray-700 text-base'><span className="font-bold">Abilities:</span> {pokemon.abilities.split(',').toString()}</p>
-						</div>
-						<div className='px-6 pt-2 pb-2'>
-							<span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
-                {pokemon.similarity?.toFixed(3)}
-							</span>
+							{pokemon.habitat && (<p className='text-gray-700 text-base'><span className="font-bold">Habitat:</span> {pokemon.habitat}</p>)}
+							{pokemon.genus && (<p className='text-gray-700 text-base'><span className="font-bold">Genus:</span> {pokemon.genus}</p>)}
+							{pokemon.shape && (<p className='text-gray-700 text-base'><span className="font-bold">Shape:</span> {pokemon.shape}</p>)}
 						</div>
 					</div>
 				))}
