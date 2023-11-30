@@ -21,6 +21,7 @@
     "@upstash/ratelimit": "^0.4.4",
     "@vercel/kv": "^0.2.3",
     "autoprefixer": "10.4.16",
+    "axios": "^1.6.2",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
     "eslint": "8.51.0",

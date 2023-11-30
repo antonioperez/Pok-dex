@@ -20,17 +20,25 @@ export async function searchPokedex(
       SELECT
         id,
         "name",
+        abilities,
+        image,
+        description,
+        weight,
+        height,
+        color,
+        type,
         1 - (embedding <=> ${vectorQuery}::vector) as similarity
       FROM pokemon
 
       WHERE 1 - (embedding <=> ${vectorQuery}::vector) > .5
       ORDER BY similarity DESC
-      LIMIT 10;
+      LIMIT 25;
     `
 
     return pokemon as Array<Pokemon & { similarity: number }>
   } catch (error) {
     console.error(error)
+
     throw error
   }
 }

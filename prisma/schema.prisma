@@ -10,20 +10,23 @@ generator client {
 }
 
 model Pokemon {
-  id         String  @id @default(cuid())
-  number     Int
-  name       String
-  type1      String
-  type2      String?
-  total      Int
-  hp         Int
-  attack     Int
-  defense    Int
-  spAtk      Int
-  spDef      Int
-  speed      Int
-  generation Int
-  legendary  Boolean
+  id          String  @id @default(cuid())
+  number      Int
+  name        String
+  abilities   String
+  image       String
+  description String
+  color       String
+  type        String
+  height      Int
+  weight      Int
+  total       Int
+  hp          Int
+  attack      Int
+  defense     Int
+  spAtk       Int
+  spDef       Int
+  speed       Int
 
   embedding Unsupported("vector(1536)")?
 
