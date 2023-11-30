@@ -15,7 +15,7 @@ export default function Home() {
         <div className="flex justify-between items-center mb-4">
           <div className="space-y-1">
             <p className="text-sm text-gray-500 leading-5">
-              Try searching via natural language.. Try &quot;Which pokemon are based on dinosaurs?&quot; or &quot;lizard&quot;
+              Try searching via natural language.. Try &quot;Which pokemon are based on dinosaurs?&quot; or &quot;tree&quot;
               or &quot;Which pokemon are fire types?&quot; <br /><br /> Cosine similarity is used to find the most
               similar Pokémon.
             </p>
