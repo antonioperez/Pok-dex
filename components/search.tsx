@@ -42,7 +42,7 @@ export function Search({ searchPokedex }: SearchProps) {
 					onValueChange={(q) => setQuery(q)}
 				/>
 			</Command>
-			<div className='grid grid-cols-4 gap-4'>
+			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 justify-items-center'>
 				{searchResults.map((pokemon) => (
 					<div key={pokemon.name} className='max-w-xs rounded overflow-hidden shadow-lg bg-white'>
 						<img className='w-11/12' src={pokemon.image} alt={`${pokemon.name} Image`} />

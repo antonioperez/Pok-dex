@@ -11,7 +11,7 @@ export default function Home() {
       <h1 className="pt-4 pb-8 bg-gradient-to-br from-black via-[#171717] to-[#575757] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
         Pokédex
       </h1>
-      <div className="">
+      <div className="px-2">
         <div className="flex justify-between items-center mb-4">
           <div className="space-y-1">
             <p className="text-sm text-gray-500 leading-5">
