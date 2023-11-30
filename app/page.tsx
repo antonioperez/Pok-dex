@@ -15,8 +15,8 @@ export default function Home() {
         <div className="flex justify-between items-center mb-4">
           <div className="space-y-1">
             <p className="text-sm text-gray-500 leading-5">
-              Try &quot;electric&quot; or &quot;fire&quot; or &quot;lizard&quot;
-              or &quot;cat.&quot; Cosine similarity is used to find the most
+              Try searching via natural language.. Try &quot;who's electric?&quot; or &quot;fire&quot; or &quot;lizard&quot;
+              or &quot;Who's strongest?&quot; Cosine similarity is used to find the most
               similar Pokémon.
             </p>
           </div>
