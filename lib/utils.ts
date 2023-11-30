@@ -7,10 +7,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-// Create a new ratelimiter, that allows 10 requests per 10 seconds
+// Create a new ratelimiter, that allows x requests per 10 seconds
 export const ratelimit = new Ratelimit({
   redis: kv as any,
-  limiter: Ratelimit.slidingWindow(20, '10 s'),
+  limiter: Ratelimit.slidingWindow(30, '10 s'),
   analytics: true,
   
   /**

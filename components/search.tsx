@@ -11,6 +11,7 @@ export interface SearchProps {
 
 export function Search({ searchPokedex }: SearchProps) {
 	const [query, setQuery] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 	const [searchResults, setSearchResults] = useState<Array<Pokemon & { similarity?: number }>>([]);
 
 	const [debouncedQuery] = useDebounce(query, 150);
@@ -19,7 +20,9 @@ export function Search({ searchPokedex }: SearchProps) {
 		let current = true;
 
 		if (debouncedQuery.trim().length > 0) {
+			setIsLoading(true);
 			searchPokedex(debouncedQuery).then((results) => {
+				setIsLoading(false);
 				if (current) {
 					setSearchResults(results);
 				}
@@ -42,6 +45,7 @@ export function Search({ searchPokedex }: SearchProps) {
 					onValueChange={(q) => setQuery(q)}
 				/>
 			</Command>
+			{isLoading && (<span className="text-gray-700 text-base font-bold" ><svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>Processing...</span>)}
 			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
 				{searchResults.map((pokemon) => (
 					<div key={pokemon.name} className='max-w-xs rounded overflow-hidden shadow-lg bg-white'>

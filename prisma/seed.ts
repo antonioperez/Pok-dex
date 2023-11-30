@@ -137,12 +137,12 @@ async function fetchPokemon() {
 
       return {
         ...pokemon,
-        description: descriptionText,
+        description: descriptionText.replace('pokemon', pokemon.name).replace('Pokémon', pokemon.name).replace('POKéMON', pokemon.name).replace('Pokémon', pokemon.name),
         color,
         shape,
         isLegendary,
         habitat,
-        genus
+        genus: genus.replace('pokemon', '').replace('Pokémon', '').replace('POKéMON', '').replace('Pokémon', '').trim(),
       }
     });
 
