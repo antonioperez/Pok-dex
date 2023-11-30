@@ -23,9 +23,13 @@ export function Search({ searchPokedex }: SearchProps) {
   const [searchResults, setSearchResults] = useState<
     Array<Pokemon & { similarity?: number }>
   >([])
+
   const [debouncedQuery] = useDebounce(query, 150)
+
   useEffect(() => {
+
     let current = true
+
     if (debouncedQuery.trim().length > 0) {
       searchPokedex(debouncedQuery).then((results) => {
         if (current) {
@@ -33,10 +37,12 @@ export function Search({ searchPokedex }: SearchProps) {
         }
       })
     }
+
     return () => {
       current = false
     }
   }, [debouncedQuery, searchPokedex])
+  
   return (
     <div className="w-full">
       <Command label="Command Menu" shouldFilter={false} className="h-[200px]">

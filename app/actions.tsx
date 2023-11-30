@@ -22,9 +22,10 @@ export async function searchPokedex(
         "name",
         1 - (embedding <=> ${vectorQuery}::vector) as similarity
       FROM pokemon
-      where 1 - (embedding <=> ${vectorQuery}::vector) > .5
-      ORDER BY  similarity DESC
-      LIMIT 8;
+
+      WHERE 1 - (embedding <=> ${vectorQuery}::vector) > .5
+      ORDER BY similarity DESC
+      LIMIT 10;
     `
 
     return pokemon as Array<Pokemon & { similarity: number }>
@@ -43,5 +44,6 @@ async function generateEmbedding(raw: string) {
   })
   
   const [{ embedding }] = (embeddingData as any).data
+
   return embedding
 }
