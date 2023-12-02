@@ -3,7 +3,7 @@ import axios from 'axios';
 import fs from 'fs'
 import { openai } from '../lib/openai'
 import path from 'path'
-// import pokemon from './pokemon-with-embeddings.json'
+import pokemonData from './pokemon-with-embeddings.json'
 
 if (!process.env.OPENAI_API_KEY) {
   throw new Error('process.env.OPENAI_API_KEY is not defined. Please set it.')
@@ -27,35 +27,37 @@ async function main() {
     throw error
   }
 
-  const pokemon: any = await fetchPokemon()
+  const pokemons: any = pokemonData.data;
   const data = [];
 
-  for (const record of (pokemon as any)) {
+  for (const record of pokemons) {
     // In order to save time, we'll just use the embeddings we've already generated
     // for each Pokémon. If you want to generate them yourself, uncomment the
     // following line and comment out the line after it.
 
-    const embeddingText = `
-      name: ${record.name}
-      description: ${record.description}
-      color: ${record.color}
-      abilities: ${record.abilities}
-      type: ${record.type}
-      ${record.habitat ? `habitat: ${record.habitat}` : ''}
-      ${record.genus ? `body shape: ${record.shape}` : ''}
-      ${record.genus ? `genus: ${record.genus}` : ''}
-      ${record.isLegendary ? 'is a legendary pokemon' : ''},
-    `;
+    // const embeddingText = `
+    //   name: ${record.name}
+    //   description: ${record.description}
+    //   color: ${record.color}
+    //   abilities: ${record.abilities}
+    //   type: ${record.type}
+    //   ${record.habitat ? `habitat: ${record.habitat}` : ''}
+    //   ${record.genus ? `body shape: ${record.shape}` : ''}
+    //   ${record.genus ? `genus: ${record.genus}` : ''}
+    //   ${record.isLegendary ? 'is a legendary pokemon' : ''},
+    // `;
 
-    const embedding = await generateEmbedding(embeddingText);
+    // const embedding = await generateEmbedding(embeddingText);
+
+    const embedding = record.embedding;
     const pokeRecord = {
       ...record,
-      embedding
+      embedding: undefined,
     }
     
     // Create the pokemon in the database
     const pokemon = await prisma.pokemon.create({
-      data: record,
+      data: pokeRecord,
     })
 
     // Add the embedding
@@ -66,14 +68,14 @@ async function main() {
     `
 
     console.log(`Added ${pokemon.number} ${pokemon.name}`)
-    data.push(pokeRecord)
+    data.push(pokemon)
   }
 
   // Uncomment the following lines if you want to generate the JSON file
-  fs.writeFileSync(
-    path.join(__dirname, "./pokemon-with-embeddings.json"),
-    JSON.stringify({ data }, null, 2),
-  );
+  // fs.writeFileSync(
+  //   path.join(__dirname, "./pokemon-with-embeddings.json"),
+  //   JSON.stringify({ data }, null, 2),
+  // );
 
   console.log('Pokédex seeded successfully!')
 }
