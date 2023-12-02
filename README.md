@@ -2,6 +2,8 @@
 
 A Pokedex that uses [Vercel Postgres](https://vercel.com/postgres) as the database, [Prisma](https://prisma.io/) as the ORM with [pgvector](https://github.com/pgvector/pgvector-node#prisma) to enable vector similarity search, and OpenAI's [`text-embedding-ada-002`](https://platform.openai.com/docs/guides/embeddings) model for embeddings.
 
+Edit the seed.ts file if you want to generate your own embeddings with an open ai key
+
 ## Demo
 
 https://pokedex-seven-sigma.vercel.app
