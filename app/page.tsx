@@ -16,7 +16,7 @@ export default function Home() {
           <div className="space-y-1">
             <p className="text-sm text-gray-500 leading-5">
               Try searching via natural language.. Try &quot;Which pokemon are based on dinosaurs?&quot; or &quot;tree&quot;
-              or &quot;Which pokemon are fire types?&quot; <br /><br /> Cosine similarity is used to find the most
+              or &quot;Which pokemon are water types?&quot; <br /><br /> Cosine similarity is used to find the most
               similar Pokémon.
             </p>
           </div>
